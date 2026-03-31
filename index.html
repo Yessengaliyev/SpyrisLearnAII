@@ -4,137 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpyrisLearn</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
         body {
+            margin: 0;
+            padding: 0;
             font-family: 'Inter', system-ui, sans-serif;
             background: #050505;
             color: #ffffff;
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+        }
+
         .font-display {
             font-family: 'Space Grotesk', sans-serif;
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+
         .glow {
-            animation: glow 3s ease-in-out infinite;
+            animation: glow 3s infinite alternate;
         }
+
         @keyframes glow {
-            0%, 100% { text-shadow: 0 0 20px #a855f7; }
-            50% { text-shadow: 0 0 40px #a855f7; }
+            from { text-shadow: 0 0 15px #a855f7; }
+            to { text-shadow: 0 0 35px #a855f7; }
+        }
+
+        button {
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen p-6">
+<body>
 
-    <div class="max-w-4xl w-full glass rounded-3xl overflow-hidden shadow-2xl">
-        
-        <!-- Header -->
-        <div class="bg-black/60 px-8 py-6 border-b border-white/10 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <div class="w-11 h-11 bg-gradient-to-br from-purple-600 to-violet-600 rounded-2xl flex items-center justify-center text-3xl glow">
-                    ⚡
-                </div>
-                <div>
-                    <h1 class="font-display text-4xl font-bold tracking-tight">SpyrisLearn</h1>
-                    <p class="text-purple-400 text-sm -mt-1">AI Study Assistant</p>
-                </div>
+    <div class="max-w-4xl w-full mx-4 glass p-10 md:p-16 shadow-2xl">
+
+        <!-- Заголовок -->
+        <div class="flex items-center gap-4 mb-12">
+            <div class="w-14 h-14 bg-gradient-to-br from-purple-600 to-violet-600 rounded-2xl flex items-center justify-center text-4xl glow">
+                ⚡
             </div>
-            <div class="text-xs uppercase tracking-widest text-white/40">v2.5</div>
+            <div>
+                <h1 class="font-display text-5xl font-bold tracking-tighter">SpyrisLearn</h1>
+                <p class="text-purple-400 text-lg">AI Study Assistant</p>
+            </div>
         </div>
 
-        <div class="p-10 md:p-16">
-            <div class="text-center mb-12">
-                <h2 class="text-5xl md:text-6xl font-display font-bold leading-none mb-6">
-                    Учись умнее<br>с ИИ
-                </h2>
-                <p class="text-lg text-white/70 max-w-md mx-auto">
-                    Flashcards, тесты, планы обучения, анализ оценок и голосовой помощник
-                </p>
+        <div class="text-center mb-16">
+            <h2 class="text-6xl font-display font-bold leading-none mb-6">
+                Учись умнее<br>с искусственным интеллектом
+            </h2>
+            <p class="text-xl text-white/70 max-w-lg mx-auto">
+                Flashcards • Quizzes • Study Plans • Анализ оценок • Голосовой чат
+            </p>
+        </div>
+
+        <!-- Карточки отделов -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-16">
+            <div onclick="alert('Отдел Flashcards открыт (демо)')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-transform">
+                <div class="text-5xl mb-6">📇</div>
+                <h3 class="text-2xl font-semibold mb-2">Flashcards</h3>
+                <p class="text-white/60">Эффективное запоминание</p>
             </div>
 
-            <!-- Departments -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-                <div class="glass p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer" onclick="alert('Открывается отдел Flashcards')">
-                    <div class="text-4xl mb-4">📇</div>
-                    <h3 class="font-semibold text-xl">Flashcards</h3>
-                    <p class="text-white/60 text-sm mt-1">Быстрое запоминание</p>
-                </div>
-                <div class="glass p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer" onclick="alert('Открывается отдел Quizzes')">
-                    <div class="text-4xl mb-4">❓</div>
-                    <h3 class="font-semibold text-xl">Quizzes</h3>
-                    <p class="text-white/60 text-sm mt-1">Проверь себя</p>
-                </div>
-                <div class="glass p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer" onclick="alert('Открывается отдел Study Plan')">
-                    <div class="text-4xl mb-4">📅</div>
-                    <h3 class="font-semibold text-xl">Study Plan</h3>
-                    <p class="text-white/60 text-sm mt-1">Персональный план</p>
-                </div>
-                <div class="glass p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer" onclick="alert('Открывается отдел Marks')">
-                    <div class="text-4xl mb-4">📊</div>
-                    <h3 class="font-semibold text-xl">Marks</h3>
-                    <p class="text-white/60 text-sm mt-1">Анализ оценок</p>
-                </div>
-                <div class="glass p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer" onclick="alert('Открывается отдел Voice')">
-                    <div class="text-4xl mb-4">🎤</div>
-                    <h3 class="font-semibold text-xl">Voice Chat</h3>
-                    <p class="text-white/60 text-sm mt-1">Говори с ИИ</p>
-                </div>
-                <div class="glass p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer" onclick="alert('Открывается отдел Translator')">
-                    <div class="text-4xl mb-4">🌍</div>
-                    <h3 class="font-semibold text-xl">Translator</h3>
-                    <p class="text-white/60 text-sm mt-1">Переводы и тексты</p>
-                </div>
+            <div onclick="alert('Отдел Quizzes открыт (демо)')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-transform">
+                <div class="text-5xl mb-6">❓</div>
+                <h3 class="text-2xl font-semibold mb-2">Quizzes</h3>
+                <p class="text-white/60">Тестирование знаний</p>
             </div>
 
-            <!-- Simple Chat Demo -->
-            <div class="glass rounded-3xl p-8">
-                <div class="flex gap-4 mb-6">
-                    <div class="w-10 h-10 bg-purple-600 rounded-2xl flex items-center justify-center text-xl flex-shrink-0">🤖</div>
-                    <div class="pt-1">
-                        <p class="text-purple-400 font-medium">Spyris</p>
-                        <p class="text-white/80">Привет! Чем я могу помочь тебе сегодня?</p>
-                    </div>
-                </div>
+            <div onclick="alert('Отдел Study Plan открыт (демо)')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-transform">
+                <div class="text-5xl mb-6">📅</div>
+                <h3 class="text-2xl font-semibold mb-2">Study Plan</h3>
+                <p class="text-white/60">Персональный план учёбы</p>
+            </div>
 
-                <div class="flex flex-col gap-3">
-                    <input id="userInput" 
-                           type="text" 
-                           placeholder="Напиши свой вопрос..." 
-                           class="bg-black/50 border border-white/20 rounded-2xl px-5 py-4 focus:outline-none focus:border-purple-500 text-white placeholder-white/40">
-                    
-                    <button onclick="sendDemoMessage()" 
-                            class="bg-purple-600 hover:bg-purple-700 transition-colors py-4 rounded-2xl font-semibold text-lg">
-                        Отправить
-                    </button>
+            <div onclick="alert('Отдел Marks открыт (демо)')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-transform">
+                <div class="text-5xl mb-6">📊</div>
+                <h3 class="text-2xl font-semibold mb-2">Marks Analysis</h3>
+                <p class="text-white/60">Анализ твоих оценок</p>
+            </div>
+
+            <div onclick="alert('Голосовой чат открыт (демо)')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-transform">
+                <div class="text-5xl mb-6">🎤</div>
+                <h3 class="text-2xl font-semibold mb-2">Voice Chat</h3>
+                <p class="text-white/60">Разговаривай со Spyris</p>
+            </div>
+
+            <div onclick="alert('Переводчик открыт (демо)')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-transform">
+                <div class="text-5xl mb-6">🌍</div>
+                <h3 class="text-2xl font-semibold mb-2">Translator</h3>
+                <p class="text-white/60">Перевод и написание текстов</p>
+            </div>
+        </div>
+
+        <!-- Простой чат -->
+        <div class="glass p-8 rounded-3xl">
+            <div class="flex items-start gap-5 mb-8">
+                <div class="w-12 h-12 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0">
+                    🤖
+                </div>
+                <div>
+                    <p class="text-purple-400 font-medium mb-1">Spyris • онлайн</p>
+                    <p class="text-white/80 text-lg">Привет! Чем я могу помочь тебе с учёбой сегодня?</p>
                 </div>
             </div>
 
-            <div class="text-center text-white/40 text-xs mt-10">
-                Это упрощённая демонстрационная версия для GitHub Pages<br>
-                Полное приложение значительно мощнее
-            </div>
+            <input 
+                id="msgInput"
+                type="text" 
+                placeholder="Например: Подготовь flashcards по алгебре..." 
+                class="w-full bg-black/60 border border-white/20 rounded-2xl px-6 py-5 text-white placeholder-white/50 focus:outline-none focus:border-purple-500 text-base"
+                onkeypress="if(event.key === 'Enter') sendMessage()">
+            
+            <button onclick="sendMessage()" 
+                    class="mt-4 w-full bg-purple-600 hover:bg-purple-700 py-5 rounded-2xl font-semibold text-lg">
+                Отправить сообщение
+            </button>
+        </div>
+
+        <div class="text-center text-white/40 text-xs mt-10">
+            Это упрощённая демо-версия для GitHub Pages<br>
+            Полное приложение использует React + Gemini AI
         </div>
     </div>
 
 <script>
-    function sendDemoMessage() {
-        const input = document.getElementById('userInput');
+    function sendMessage() {
+        const input = document.getElementById('msgInput');
         if (input.value.trim() === "") {
-            alert("Напиши что-нибудь перед отправкой 🙂");
+            alert("Напиши сообщение перед отправкой 🙂");
             return;
         }
-        alert("Сообщение отправлено:\n\n" + input.value + "\n\n(В полной версии здесь появится ответ от ИИ)");
+        
+        alert("✅ Сообщение отправлено:\n\n" + input.value + "\n\nВ полной версии здесь будет ответ от Spyris");
         input.value = "";
     }
 
-    // Автоматический приветственный текст
-    console.log("%cSpyrisLearn Demo успешно загружен!", "color: #a855f7; font-weight: bold;");
+    console.log("%cSpyrisLearn Demo успешно загружен!", "color:#a855f7; font-size:14px; font-weight:bold");
 </script>
 
 </body>
